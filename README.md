@@ -4,6 +4,11 @@ This repository is for practice purposes, my goal here is implementing a few alg
 
 ## Algorithms
 
-- [x] Binary search
-- [ ] Quicksort3
-- [ ] Dijkstra
+- [X]  Binary search
+- [x]  Quicksort
+- [ ]  Dijkstra
+
+## References
+
+- [The Rust Programming Language - Book](https://doc.rust-lang.org/book/title-page.html)
+- [Rust std](https://doc.rust-lang.org/std/all.html)
