@@ -6,10 +6,10 @@ pub fn quick_sort(slice: &mut [i32]) -> Vec<i32> {
         quick_sort(&mut slice[0..partition_index]);
         quick_sort(&mut slice[partition_index + 1..len]);
         assert_sorted(slice);
-        return slice.to_vec()
+        return slice.to_vec();
     }
 
-    return slice.to_vec()
+    slice.to_vec()
 }
 
 fn partition(slice: &mut [i32]) -> usize {

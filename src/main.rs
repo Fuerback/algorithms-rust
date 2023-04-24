@@ -1,9 +1,12 @@
 mod binary_search;
+mod compare_strings;
 mod quicksort_algorithm;
 
-use rand::Rng;
 use crate::binary_search::binary_search;
+use crate::compare_strings::{compare_strings, Matches};
 use crate::quicksort_algorithm::quick_sort;
+use rand::Rng;
+use rocket::serde::json::Json;
 
 #[macro_use]
 extern crate rocket;
@@ -14,6 +17,11 @@ fn binary(number: &str) -> &'static str {
     return binary_search(number);
 }
 
+#[get("/compare-strings")]
+fn compare() -> Json<Matches> {
+    Json(compare_strings())
+}
+
 #[get("/quicksort")]
 fn quicksort() -> String {
     let mut elements = Vec::new();
@@ -22,7 +30,7 @@ fn quicksort() -> String {
 
     while i < 50 {
         elements.push(rng.gen::<i32>());
-        i = i + 1;
+        i += 1;
     }
 
     let sorted_elements = quick_sort(&mut elements);
@@ -31,6 +39,5 @@ fn quicksort() -> String {
 
 #[launch]
 fn rocket() -> _ {
-    rocket::build()
-        .mount("/", routes![binary, quicksort])
+    rocket::build().mount("/", routes![binary, quicksort, compare])
 }
